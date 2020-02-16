@@ -13,10 +13,10 @@ public class View {
     System.out.println(message);
   }
 
-  public void checkCoutry(Scanner sc) {
+  public void checkCoutry() {
+    Scanner sc = new Scanner(System.in);
     System.out.println(TextValue.INPUT_ORDER_COUNTRY);
     String text = sc.nextLine();
-
     switch (text) {
       case "ua":
         bundle = ResourceBundle.getBundle(
@@ -28,16 +28,21 @@ public class View {
             MESSAGES_BUNDLE_NAME,
             new Locale("en", "US"));
         break;
+      default:
+        bundle = ResourceBundle.getBundle(
+            MESSAGES_BUNDLE_NAME,
+            new Locale("en", "US"));
+        break;
     }
   }
 
-//  public String concatenationString(String... message) {
-//    StringBuilder concatString = new StringBuilder();
-//    for (String v : message) {
-//      concatString = concatString.append(v);
-//    }
-//    return new String(concatString);
-//  }
+  public String concatenationString(String... message) {
+    StringBuilder concatString = new StringBuilder();
+    for (String v : message) {
+      concatString = concatString.append(v);
+    }
+    return new String(concatString);
+  }
 
   public void printStringInput(String message) {
     System.out.println(bundle.getString(message));
@@ -47,5 +52,4 @@ public class View {
     bundle.getString(message_Err);
     bundle.getString(message_In);
   }
-
 }

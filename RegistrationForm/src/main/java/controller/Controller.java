@@ -1,31 +1,22 @@
 package controller;
 
 import java.util.Scanner;
-import view.TextValue;
+import model.Model;
 import view.View;
 
 public class Controller {
 
   private View view = new View();
+  private Model model = new Model();
 
-  public Controller(View view) {
+  public Controller(View view, Model model) {
     this.view = view;
-  }
-
-  public Scanner getResult() {
-    Scanner sc = new Scanner(System.in);
-    return sc;
+    this.model = model;
   }
 
   public void getUser() {
-    view.checkCoutry(getResult());
-    Scanner sc = getResult();
-    view.printStringInput(TextValue.INPUT_NAME);
-    String textname = sc.nextLine();
-        view.printStringInput(TextValue.INPUT_SURNAME);
-    String textsurname = sc.nextLine();
-    System.out.println(textname);
-    System.out.println(textsurname);
+    Scanner sc = new Scanner(System.in);
+    NotePersonInformation notePersonInformation = new NotePersonInformation(view, sc);
+    notePersonInformation.inputNote(model);
   }
-
 }
